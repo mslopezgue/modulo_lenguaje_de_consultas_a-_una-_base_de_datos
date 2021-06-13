@@ -1,0 +1,165 @@
+Evidencia día 4 semana 6
+
+Creación nuevo portafolio "modulo_lenguaje_de_consultas_a _una _base_de_datos", copiar en foro
+con el link del nuevo repositorio. Carpeta DD/MM/AAAA.
+
+SQL
+Lenguaje estructurado de consultas por el cual accedemos a hacer peticiones a las bases de datos
+siempre va ir un usuario, solicitud va ir a la base de datos mediante el gestor se va devolver una respuesta al usuario.
+mY SQL, ACCES, ORACLE.
+
+El lenguaje de SQL es un lenguaje de alto nivel debido al tipo de instrucciones que utiliza textualmente.
+
+Datos
+unidad mas básica de la información, los datos se procesan y se genera la informacion ya que
+por si solos no entregan nada pero tienen relevancia para el usuario. La informatica proporciona herramientas para procesar 
+manipular los datos y transformarlos en información. Son significantes para quien los observa.
+
+Informacion
+conjunto de datos que poseen un significado de modo tal que reducen la oncertidumbre
+y aumentan el conocimiento de quien se acerca a observarlos. Estos datos se enuentran disponibles
+para uso inmediato y sirven para clarificar incertidumbres sobre determinados temas.
+
+Bases de datos
+
+estructura organizada de datos. se almacenan electronicamente 
+de computadora. una base de datos es controlada por un sistema de 
+gestión de base de datos (DBMS).
+En conjunto los datos y el DBMS, junto con las aplicaciones
+que estan asociados con ellos, se conocen como un SISTEMA DE BASE DE DATOS 
+que a menudo se reducen a solo la base de datos.
+
+My sqlworkbench te entrega las instrucciones, y el código SQL, es intiuitivo y amigable.
+
+tipos de campos
+Vamos a crear las tablas, que van a ser nuestras distintas entidades se van a crear relaciones entre estas tablas.
+alfanumericos long max 255 caracteres.
+numericos, varios tipos enteros y reales.
+Booleanos: V o F
+Fechas
+Autoincrementables: campos numericos enteros que incrementan en su unidad su valor por cada resgitro incorporado
+
+clave primaria va ser un id del nombre de la tabla.
+id_empleado.
+
+tipos de datos
+int o integer: numeros enteros. Existen otros tipos de mayor o menos especificos de cada base de datos.
+Double o Real, punto flotante
+Char alfanumerico de long predefinida
+varchar alfanumerico de longitud variable
+date: fechas y horas
+Bit o Boolean: Almacenan un bit de información (VoF)
+
+Sentencias SQL
+
+DDL: lenguaje de definición de datos, sentencias que nos permite definir, alterar, 
+modificar objetos dentro de mi base de datos.
+DML: lenguaje de manipulación de datos, permite manipular, consultar, eliminar los datos o registros de las tablas.
+
+Sentencias SQL-DML
+select: recupera datos
+insert añade filas
+delete suprime filas de datos
+Update: modifica datos existentes
+Se acompañan de clausulas y operadores
+
+Sentencias SQL-DDL
+Create: nos crea distintos elementos iniciar una BD una tabla.
+Drop: nos permite eliminar elelementos
+Alter: modifica la estructura de la BD.
+
+Creación de una tabla
+Se debe espcificar algunos datos tales como: el nombre que le queremos asignar, los nombres de los campos y sus caracteristicas.
+por ejemplo:
+
+Create table nombre_t (
+id_tabla int auto_increment,
+nombre varchar(250),
+descripcion text,
+prymary key(id_tabla)
+);
+
+id_persona,
+tipo de dato y autoincrementable. 
+campo nombre entre parentesis el largo del varchar,
+descripcion
+clave primaria, nombre del campo.
+
+Modificar una tabla
+podemos agregar nuevos campos a nuestra tabla de la siguiente manera:
+alter table nombre table add_column campo tipocampo
+alter table libro add column ejemplares integer;
+
+podemos modificar el tipo de dato de un campo de nuestra tabla,
+de la siguiente manera:
+
+alter table nombre_tabla modify campo tipocampo
+alter table libro modify precioVenta double;
+
+Modificar una tabla Drop
+podemos eliminar un campo de nuestra tabla de la siguiente manera:
+
+alter table nombre_tabla drop column campo
+alter table libro drop column precioVenta;
+
+modificar una tabla Drop
+podemos eliminar una tabla de la siguiente manera
+drop table nombre_tabla
+drop table nombre_t;
+
+
+Ejercicios en clases
+
+create database pruebadb character set utf8;
+
+use pruebadb;
+
+create table primeraTabla(
+id_primeraT int auto_increment,
+nombre varchar(20),
+estatura float,
+fechaNacimiento date,
+descripcion text,
+primary key(id_primeraT)
+
+);
+alter table primeraTabla add column Edad integer;
+alter table primeraTabla add column FechaInscripcion date;
+alter table primeraTabla add column Direccion varcharprimeratabla(25);
+alter table primeraTabla add column Carrera varchar(20);
+
+create database Clientes character set utf8;
+
+use Clientes;
+
+create table TablaCliente(
+id_Cliente int auto_increment,
+nombre varchar(20),
+Direccion varchar(30),
+DetalleProductos text,
+MontoVenta int,
+Envio varchar(10),
+estado text,
+primary key(id_Cliente)
+
+);
+alter table TablaCliente drop column Direccion;
+alter table TablaCliente modify Envio text;
+
+create database Clientes2 character set utf8;
+
+use Clientes2;
+
+create table TablaCliente2(
+id_Cliente2 int auto_increment,
+nombre2 varchar(20),
+Direccion2 varchar(30),
+DetalleProductos2 text,
+MontoVenta2 int,
+Envio2 varchar(10),
+estado2 text,
+primary key(id_Cliente2)
+);
+drop table TablaCliente2;
+
+

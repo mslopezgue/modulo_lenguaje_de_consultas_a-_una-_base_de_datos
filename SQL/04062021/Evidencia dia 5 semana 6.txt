@@ -1,0 +1,145 @@
+Evidencia día 5 semana 6
+
+Repaso clase anterior
+
+Control
+
+Según los visto en clase crear y realizar lo solicitado:
+Crear base de datos con 2 tablas
+Agregar dos nuevos campos a las tablas ya creadas
+Cambiar el tipo de dato a un campo de la tabla
+Eliminar un campo de cada tabla creada.
+
+create database TrazabilidadProduccion character set utf8;
+
+use TrazabilidadProduccion;
+
+create table TablaTrazabilidadProduccion(
+id_variedad int auto_increment,
+codigoProductor varchar(20),
+FechaProduccion date,
+tipoEmbalaje text,
+primary key(id_variedad)
+);
+alter table TablaTrazabilidadProduccion add column CodigoPallet integer;
+alter table TablaTrazabilidadProduccion add column FechaEmbalaje date;
+alter table TablaTrazabilidadProduccion modify codigoProductor int;
+alter table TablaTrazabilidadProduccion drop column FechaProduccion;
+
+create database TrazabilidadBodega character set utf8;
+
+use TrazabilidadBodega;
+
+create table TablaTrazabilidadbodega(
+id_CodigoPallet int auto_increment,
+codigoProductor varchar(20),
+FechaIngreso date,
+tipoEmbalaje text,
+tipoEmbarque text,
+primary key(id_CodigoPallet)
+);
+alter table TablaTrazabilidadbodega add column Temperatura float;
+alter table TablaTrazabilidadbodega add column PesoPallet float;
+alter table TablaTrazabilidadbodega modify PesoPallet int;
+alter table TablaTrazabilidadbodega drop column tipoEmbalaje;
+
+Añadir registros
+Los registros pueden ser introducidos con sentencias que utilizan la instrucción 
+insert, la sintaxis es la siguiente:
+
+Inser into nombre_tabla (campos)
+values (valores);
+
+ejemplo
+Inser into nombre_t (nombre,descripcion)
+values('Alejandro','Gerente General de Eca');
+
+insert into TablaTrazabilidadbodega (codigoProductor,FechaIngreso,tipoEmbarque,Temperatura,PesoPallet) values ('3419','2021-02-01','Madera',15.4,1000);
+insert into TablaTrazabilidadbodega (codigoProductor,FechaIngreso,tipoEmbarque,Temperatura,PesoPallet) values ('3419','2021-02-02','Carton',14.8,1200);
+
+
+insert into tablatrazabilidadproduccion(codigoProductor,tipoEmbalaje,FechaEmbalaje,CodigoPallet) values ('3419','Madera','2021-02-01',889900);
+insert into tablatrazabilidadproduccion(codigoProductor,tipoEmbalaje,FechaEmbalaje,CodigoPallet) values ('3419','Carton','2021-02-02',889901);
+
+Ejercicio
+Crear una base de datos con las siguientes tablas:
+Empleado,Libro. Agregar 20 registros por tabla.
+
+create database BaseDatosDia5 character set utf8;
+
+use BaseDatosDia5;
+
+create table TablaEmpleado(
+  idEmpleado int auto_increment,
+  nombre varchar(30),
+  apellidoP varchar(30),
+  apellidoM varchar(30),
+  edad int, 
+  departamento varchar(30),
+  cargo varchar(30),
+  sueldo int,
+  fechaingreso date,
+  primary key(idEmpleado)
+);
+
+create table TablaLibro(
+  idLibro int auto_increment,
+  nombreLibro varchar(30),
+  Autor varchar(30),
+  editorial varchar(30),
+  edicion int, 
+  añoPublicacion int,
+  categoria text,
+  ejemplares int,
+primary key(idLibro)
+);
+select * from TablaEmpleado;
+insert into TablaEmpleado (nombre, apellidoP, apellidoM, edad, departamento, cargo, sueldo, fechaingreso)
+values ('Francisca','Vidal','Orellana',37,'Ahorro','Analista',700000,'2021-02-02');
+
+1	Maria	Lopez	Guerrero	34	Recaudacion	Analista	700000	2021-02-01
+2	Sebastian	Nunez	Segura	31	Ventas		Asesor		500000	2021-02-01
+3	Vanesa	Dias	Vidal		25	Ventas		Asesor		500000	2021-02-01
+4	Jose	Fuentes	Vidal		41	Afiliación	Analista	700000	2021-02-02
+5	Josefina	Puente	Reyes	37	Ahorro		Analista	700000	2021-02-02
+6	Nicolas	Lopez	Lopez		34	Diseño		Desarrollador	700000	2021-02-01
+7	Karen	Reyes	Lopez		44	Recaudacion	Analista	700000	2021-02-03
+8	Juan	Sajama	Perez		45	Ahorro		Analista	700000	2021-02-04
+9	Juanita	Miranda	Pardo		35	Recaudacion	Analista	700000	2021-02-01
+10	MauricioCisternas	Vera	31	Ventas		Asesor		500000	2021-02-01
+11	Benjamin	Bernal	Fiori	33	Afiliacion	Analista	700000	2021-02-02
+12	Sebastian	Micaly	Serey	47	Afiliacion	Analista	700000	2021-02-04
+13	Rodrigo	Rioseco		Lopez	58	Recaudacion	Analista	700000	2021-02-02
+14	Manuel	Canales		Ceron	44	Cobranza	Analista	700000	2021-02-01
+15	Rayen	Araya		Nunez	24	Cobranza	Analista	700000	2021-02-01
+16	Nicole	Arancibia	Montes	38	Cobranza	Analista	700000	2021-02-01
+17	Constanza	Ventura	Araya	28	Ahorro		Analista	700000	2021-02-02
+18	Jorge	Gomez		Varela	38	Ventas		Asesor		500000	2021-02-03
+19	Estefania	Lopez	Jimenez	35	Afiliacion	Analista	700000	2021-02-01
+20	FranciscaVidal	Orellana	37	Ahorro		Analista	700000	2021-02-02
+
+select * from TablaLibro;
+insert into TablaLibro(nombreLibro, Autor, editorial, Edicion, añoPublicacion, categoria, ejemplares)
+values ('La vuelta al mundo en 80 dias','julio Verne','Prosa',35,1995,'Fantasia',2000);
+
+1	Francisca yo te amo		Jose luis Rosasco		Antartida	1	1988	Drama		1000
+2	Gracia y el forastero		Guillermo Blanco		ZigZag		55	1964	Drama		10000
+3	Comer Rezar Amar		Elizabeth gilberth		Aguilar		21	2006	Drama		5000
+4	Adios Carlos Marx		Sergio Gomez			Antartida	1	1992	Politica	5000
+5	Un hijo no puede morir		Susana Roccatagliata		Grijalbo	2	2000	Drama		1000
+6	Historias de Franz		Christine Nostlinger		Cesma		2	1992	Infantil	1000
+7	Viento Salvaje de Verano	Bo Carpelan			Cesma		6	1990	Infantil	2000
+8	Asi Hablaba Zaratrusta		Federico Nietzsche		Antartida	25	2003	Grandes Pensadores1000
+9	La Llorona			Marcela Serrano			Alfaguara	1	2008	Drama		1000
+10	El amor es una droga dura	Cristina Peri			Planeta		1	1999	Drama		1000
+11	La inteligencia Emocional	Daniel Goleman			Vergara		10	1995	Psicologia	10000
+12	Osho conciencia femenina	Osho				Grijalbo	9	2009	Espiritualidad	1000
+13	Osho Cambio			Osho				Grijalbo	5	2012	Espiritualidad	1000
+14	Osho Emociones			Osho				Grijalbo	3	2009	Espiritualidad	1000
+15	La espía			Paulo Coehlo			Antartida	1	2015	Espiritualidad	2000
+16	El Principito			Antoine de Saint Exupery	Publimex	35	2009	Grandes Obras	2000
+17	Un Juez rural			Pedro Prado			Universitaria	2	1997	Premios 	2000
+18	Los apaches			Gustavo Airmad			Acme		1	1964	Fantasia	1000
+19	El tunel			Ernesto Sabato			Antartida	8	2002	Fantasia	1000
+20	La vuelta al mundo en 80 dias	julio Verne			Prosa		35	1995	Fantasia	2000
+															
