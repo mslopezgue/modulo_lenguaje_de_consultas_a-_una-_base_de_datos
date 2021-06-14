@@ -1,0 +1,185 @@
+Evidencia dia 2 semana 7
+
+Repaso Clase anterior
+
+Ejercicio
+Utilizando las tablas libro y empleado cree las consultas para responder lo siguiente:
+
+-Determinar los datos de los libros con mas de 100 ejemplares.
+
+select nombreLibro from tablalibro where ejemplares>100;
+Francisca yo te amo
+Gracia y el forastero
+Comer Rezar Amar
+Adios Carlos Marx
+Un hijo no puede morir
+Historias de Franz
+Viento Salvaje de Verano
+Asi Hablaba Zaratrusta
+La Llorona
+El amor es una droga dura
+La inteligencia Emocional
+Osho conciencia femenina
+Osho Cambio
+Osho Emociones
+La espía
+El Principito
+Un Juez rural
+Los apaches
+El tunel
+La vuelta al mundo en 80 dias
+
+-Determinar el nombre, apellidoP, ApellidoM y cargo de los empleados que tienen un sueldo sobre 
+los 500000 y que pertenecen al departamento (definir).
+select nombre, apellidoP, ApellidoM, cargo from tablaempleado where sueldo>500000 and departamento='Cobranza';
+
+Manuel	Canales	Ceron		Analista
+Rayen	Araya	Nunez		Analista
+Nicole	Arancibia Montes	Analista
+
+-Determinar los datos de los libros que son de la 1era o 2da edicion del autor.
+(definidos por ustedes)
+select nombrelibro, autor, edicion from tablalibro where (edicion='1'or edicion='2') and autor='Cristina Peri';
+
+El amor es una droga dura	Cristina Peri	1
+
+-Determinar los autores que tienen algunas de las ediciones 1,2 o 3.
+select autor, edicion from tablalibro where (edicion='1' or edicion='1' or edicion='3') and autor='Osho';
+
+Osho	3
+
+Determinar los empleados que pertenecen al departamento (definido por ud)
+select nombre, apellidoP from tablaempleado where departamento='Ventas';
+
+Sebastian	Nunez
+Vanesa		Dias
+Mauricio	Cisternas
+Jorge		Gomez
+
+Clausula where con NOT IN
+Podemos seleccionar registros de nuestra tabla que cumplan ciertas condiciones
+con la clausula where y ademas utilizando la plabra clave NOT IN, que solo tomara 
+en cuenta los calores que no coinciden con la lista, se expresa de la siguiente manera:
+
+Select * from Nombre_tabla where campo not in (lista de valores)
+Select * from nombre_t where id_tabla not in (1,5);
+
+Select * from tablalibro where editorial not in ('grijalbo','antartida');
+2	Gracia y el forastero		Guillermo Blanco	ZigZag		55	1964	Drama		10000
+3	Comer Rezar Amar		Elizabeth gilberth	Aguilar		21	2006	Drama		5000
+6	Historias de Franz		Christine Nostlinger	Cesma		2	1992	Infantil	1000
+7	Viento Salvaje de Verano	Bo Carpelan		Cesma		6	1990	Infantil	2000
+9	La Llorona			Marcela Serrano		Alfaguara	1	2008	Drama		1000
+10	El amor es una droga dura	Cristina Peri		Planeta		1	1999	Drama		1000
+11	La inteligencia Emocional	Daniel Goleman		Vergara		10	1995	Psicologia	10000
+16	El Principito			Antoine de SaintExupery	Publimex	35	2009	Grandes Obras	2000
+17	Un Juez rural			Pedro Prado		Universitaria	2	1997	Premios Literatura2000
+18	Los apaches			Gustavo Airmad		Acme		1	1964	Fantasia	1000
+20	La vuelta al mundo en 80 dias	julio Verne		Prosa		35	1995	Fantasia	2000
+							
+Clausula where con<> (distinto)
+Podemos seleccionar registros de nuestra tabla que cumplan ciertas condiciones
+con la clausula where y ademas utilizando el operador <> (distinto), se expresa de
+la siguiente manera:
+
+Select * from nombre_tabla where campo <> valor
+select * from persona where nombre <> 'Alejandra';
+
+select * from tablaempleado where departamento <> 'ventas';
+1	Maria	Lopez	Guerrero	34	Recaudacion	Analista	700000	2021-02-01
+4	Jose	Fuentes	Vidal		41	Afiliación	Analista	700000	2021-02-02
+5	Josefina	Puente	Reyes	37	Ahorro		Analista	700000	2021-02-02
+6	Nicolas	Lopez	Lopez		34	Diseño		Desarrollador	700000	2021-02-01
+7	Karen	Reyes	Lopez		44	Recaudacion	Analista	700000	2021-02-03
+8	Juan	Sajama	Perez		45	Ahorro		Analista	700000	2021-02-04
+9	Juanita	Miranda	Pardo		35	Recaudacion	Analista	700000	2021-02-01
+11	Benjamin	Bernal	Fiori	33	Afiliacion	Analista	700000	2021-02-02
+12	Sebastian	Micaly	Serey	47	Afiliacion	Analista	700000	2021-02-04
+13	Rodrigo	Rioseco	Lopez		58	Recaudacion	Analista	700000	2021-02-02
+14	Manuel	Canales	Ceron		44	Cobranza	Analista	700000	2021-02-01
+15	Rayen	Araya	Nunez		24	Cobranza	Analista	700000	2021-02-01
+16	Nicole	Arancibia	Montes	38	Cobranza	Analista	700000	2021-02-01
+17	Constanza	Ventura	Araya	28	Ahorro		Analista	700000	2021-02-02
+19	Estefania	Lopez	Jimenez	35	Afiliacion	Analista	700000	2021-02-01
+20	Francisca	Vidal	Orellana37	Ahorro		Analista	700000	2021-02-02
+
+Clausula Between
+Podemos seleccionar registros de nuestra tabla que cumplan ciertas condiciones
+con la clausula where y between, con lo cual podemos crear un rango de valores
+(se utiliza para fechas o valores numericos, se expresa de la siguiente manera:
+
+Select * from nombre_tabla where campo between valor and valor
+select * from persona where fecha_nacimiento between '1985-01-01' and '2021-12-31'
+
+select nombre, sueldo, departamento from tablaempleado where sueldo between 600000 and 800000;
+Maria		700000	Recaudacion
+Jose		700000	Afiliación
+Josefina	700000	Ahorro
+Nicolas		700000	Diseño
+Karen		700000	Recaudacion
+Juan		700000	Ahorro
+Juanita		700000	Recaudacion
+Benjamin	700000	Afiliacion
+Sebastian	700000	Afiliacion
+Rodrigo		700000	Recaudacion
+Manuel		700000	Cobranza
+Rayen		700000	Cobranza
+Nicole		700000	Cobranza
+Constanza	700000	Ahorro
+Estefania	700000	Afiliacion
+Francisca	700000	Ahorro
+
+select nombre, apellidoP,fechaIngreso from tablaempleado where fechaingreso between '2021-02-02' and '2021-02-03';
+
+Jose		Fuentes	2021-02-02
+Josefina	Puente	2021-02-02
+Karen		Reyes	2021-02-03
+Benjamin	Bernal	2021-02-02
+Rodrigo		Rioseco	2021-02-02
+Constanza	Ventura	2021-02-02
+Jorge		Gomez	2021-02-03
+Francisca	Vidal	2021-02-02
+
+select nombreLibro, ejemplares from Tablalibro where ejemplares between 1000 and 5000;
+
+Francisca yo te amo		1000
+Comer Rezar Amar		5000
+Adios Carlos Marx		5000
+Un hijo no puede morir		1000
+Historias de Franz		1000
+Viento Salvaje de Verano	2000
+Asi Hablaba Zaratrusta		1000
+La Llorona			1000
+El amor es una droga dura	1000
+Osho conciencia femenina	1000
+Osho Cambio			1000
+Osho Emociones			1000
+La espía			2000
+El Principito			2000
+Un Juez rural			2000
+Los apaches			1000
+El tunel			1000
+La vuelta al mundo en 80 dias	2000
+
+Operador Like
+Podemos seleccionar registros de nuestra tabla que cumplan ciertas condiciones
+con la clausula where y el operador like se utiliza para comparar una expresion
+con ciertos caracteres:
+select * from persona where nombre like 'a%';
+select * from persona where nombre like '%a';
+select * from persona where nombre like '%a%';
+
+select * from tablaempleado where nombre like 'm%';
+1	Maria	Lopez	Guerrero		34	Recaudacion	Analista	700000	2021-02-01
+10	Mauricio	Cisternas	Vera	31	Ventas		Asesor		500000	2021-02-01
+14	Manuel	Canales	Ceron			44	Cobranza	Analista	700000	2021-02-01
+
+select * from tablaLibro where nombreLibro like '%o';
+1	Francisca yo te amo		Jose luis Rosasco	Antartida	1	1988	Drama	1000
+2	Gracia y el forastero		Guillermo Blanco	ZigZag		55	1964	Drama	10000
+7	Viento Salvaje de Verano	Bo Carpelan		Cesma		6	1990	Infantil	2000
+13	Osho Cambio			Osho			Grijalbo	5	2012	Espiritualidad	1000
+16	El Principito			Antoine de Saint Exuper	Publimex	35	2009	Grandes Obras	2000
+															
+
+Reflexión: Los operadores nos permiten generan consultas mas especificas para la consulta a la base de datos.
