@@ -8,7 +8,7 @@ Lenguaje estructurado de consultas por el cual accedemos a hacer peticiones a la
 siempre va ir un usuario, solicitud va ir a la base de datos mediante el gestor se va devolver una respuesta al usuario.
 mY SQL, ACCES, ORACLE.
 
-El lenguaje de SQL es un lenguaje de alto nivel debido al tipo de instrucciones que utiliza textualmente.
+
 
 Datos
 unidad mas básica de la información, los datos se procesan y se genera la informacion ya que
@@ -162,4 +162,4 @@ primary key(id_Cliente2)
 );
 drop table TablaCliente2;
 
-
+Reflexion: El lenguaje de SQL es un lenguaje de alto nivel debido al tipo de instrucciones que utiliza textualmente.

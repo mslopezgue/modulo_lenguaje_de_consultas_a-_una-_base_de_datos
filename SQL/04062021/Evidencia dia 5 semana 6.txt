@@ -30,6 +30,7 @@ create database TrazabilidadBodega character set utf8;
 
 use TrazabilidadBodega;
 
+
 create table TablaTrazabilidadbodega(
 id_CodigoPallet int auto_increment,
 codigoProductor varchar(20),
@@ -142,4 +143,6 @@ values ('La vuelta al mundo en 80 dias','julio Verne','Prosa',35,1995,'Fantasia'
 18	Los apaches			Gustavo Airmad			Acme		1	1964	Fantasia	1000
 19	El tunel			Ernesto Sabato			Antartida	8	2002	Fantasia	1000
 20	La vuelta al mundo en 80 dias	julio Verne			Prosa		35	1995	Fantasia	2000
+
+Reflexion: Los comandos resultan ser mas simples y amigables que en programación, por lo que resulta mas facil construir la base de datos.
 															
