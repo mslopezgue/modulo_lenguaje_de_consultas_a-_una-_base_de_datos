@@ -1,0 +1,257 @@
+Evidencia dia 3 semana 7
+
+Repaso clase anterior
+Ejercicio 
+Utilizando las tablas libro y empleado cree las consultas para responder 
+lo siguiente:
+
+-Determinar los datos de los libros que no pertenencen a 2 editoriales(definir)
+
+Select * from tablalibro where editorial not in ('grijalbo','antartida');
+2	Gracia y el forastero	Guillermo Blanco	ZigZag		55	1964	Drama	10000
+3	Comer Rezar Amar	Elizabeth gilberth	Aguilar		21	2006	Drama	5000
+6	Historias de Franz	Christine Nostlinger	Cesma		2	1992	Infantil	1000
+7	Viento Salvaje de Verano	Bo Carpelan	Cesma		6	1990	Infantil	2000
+9	La Llorona	Marcela Serrano			Alfaguara	1	2008	Drama	1000
+10	El amor es una droga dura	Cristina Peri	Planeta		1	1999	Drama	1000
+11	La inteligencia Emocional	Daniel Goleman	Vergara		10	1995	Psicologia	10000
+16	El Principito	Antoine de Saint Exupery	Publimex	35	2009	Grandes Obras	2000
+17	Un Juez rural	Pedro Prado			Universitaria	2	1997	Premios Literatura	2000
+18	Los apaches	Gustavo Airmad			Acme		1	1964	Fantasia	1000
+20	La vuelta al mundo en 80 dias	julio Verne	Prosa		35	1995	Fantasia	2000
+21	viaje al centro de la tierra	julio Verne	Prosa		34	1998	Fantasia	310
+							
+-Determinar los datos nombreLibro, editorial, y ejemplares de los libros cuyos
+ejemplares se encuentren entre 100 y 330.
+
+select nombreLibro, editorial, ejemplares from tablalibro where ejemplares between 100 and 330;
+viaje al centro de la tierra	Prosa	310
+cien años de soledad	Antartida	270
+
+-Determinar el nombre apellidoP y cargo de los empleados que tienen un sueldo 
+entre los 550000 y 750000.
+
+Select nombre, apellidoP, cargo from tablaempleado where sueldo between 550000 and 750000;
+Maria	Lopez		Analista
+Jose	Fuentes		Analista
+Josefina Puente		Analista
+Nicolas	Lopez		Desarrollador
+Karen	Reyes		Analista
+Juan	Sajama		Analista
+Juanita	Miranda		Analista
+Benjamin Bernal		Analista
+Sebastian Micaly	Analista
+Rodrigo	Rioseco		Analista
+Manuel	Canales		Analista
+Rayen	Araya		Analista
+Nicole	Arancibia	Analista
+Constanza Ventura	Analista
+Estefania Lopez		Analista
+Francisca Vidal		Analista
+Juanito	Cubillos	Analista
+Carolina	Correa	Analista
+
+-Determinar nombre, apellidoP, apellidoM, cargo, departamento y edad de 
+los empleados que no pertenecen al departamento (departamento definido por ustedes).
+
+select nombre, apellidoP, apellidoM, cargo, departamento, edad from tablaempleado where departamento not in ('Recaudacion');
+Sebastian	Nunez		Segura	Asesor		Ventas		31
+Vanesa		Dias		Vidal	Asesor		Ventas		25
+Jose		Fuentes		Vidal	Analista	Afiliación	41
+Josefina	Puente		Reyes	Analista	Ahorro		37
+Nicolas		Lopez		Lopez	Desarrollador	Diseño		34
+Juan		Sajama		Perez	Analista	Ahorro		45
+Mauricio	Cisternas	Vera	Asesor		Ventas		31
+Benjamin	Bernal		Fiori	Analista	Afiliacion	33
+Sebastian	Micaly		Serey	Analista	Afiliacion	47
+Manuel		Canales		Ceron	Analista	Cobranza	44
+Rayen		Araya		Nunez	Analista	Cobranza	24
+Nicole		Arancibia	Montes	Analista	Cobranza	38
+Constanza	Ventura		Araya	Analista	Ahorro		28
+Jorge		Gomez		Varela	Asesor		Ventas		38
+Estefania	Lopez		Jimenez	Analista	Afiliacion	35
+Francisca	Vidal	Orellana	Analista	Ahorro		37
+Juanito		Cubillos	Serey	Analista	Cobranza	24
+Carolina	Correa	Santibañez	Analista	Afiliacion	38
+
+-Determinar los datos de los libros que empiecen con la letra (letra determinada por ustedes).
+
+select * from tablaLibro where nombreLibro like 'e%';
+10	El amor es una droga dura	Cristina Peri	Planeta		1	1999	Drama		1000
+16	El Principito	Antoine de Saint Exupery	Publimex	35	2009	Grandes Obras	2000
+19	El tunel	Ernesto Sabato			Antartida	8	2002	Fantasia	1000
+
+Clausula Order By
+Esta clausula nos permite ordenar registros ya sean numericamente, alfabeticamente o por fechas
+de manera descendente o ascendente, se expresa de la siguiente manera:
+
+Select * from nombre_tabla order by campo asc
+Select * from nombre_tabla order by campo desc
+
+Select * from Persona order by nombre desc;
+Select * from Persona order by nombre asc;
+
+select nombre from tablaEmpleado order by nombre asc;
+Benjamin
+Carolina
+Constanza
+Estefania
+Francisca
+Jorge
+Jose
+Josefina
+Juan
+Juanita
+Juanito
+Karen
+Manuel
+Maria
+Mauricio
+Nicolas
+Nicole
+Rayen
+Rodrigo
+Sebastian
+Sebastian
+Vanesa
+
+select nombre, apellidoP from tablaEmpleado order by apellidoP desc;
+Francisca	Vidal
+Constanza	Ventura
+Juan		Sajama
+Rodrigo		Rioseco
+Karen		Reyes
+Josefina	Puente
+Sebastian	Nunez
+Juanita		Miranda
+Sebastian	Micaly
+Maria		Lopez
+Nicolas		Lopez
+Estefania	Lopez
+Jorge		Gomez
+Jose		Fuentes
+Vanesa		Dias
+Juanito		Cubillos
+Carolina	Correa
+Mauricio	Cisternas
+Manuel		Canales
+Benjamin	Bernal
+Rayen		Araya
+Nicole		Arancibia
+
+select nombre, apellidoP, apellidoM, departamento, cargo from tablaEmpleado where departamento='Ahorro' order by apellidoP desc;
+Francisca	Vidal	Orellana	Ahorro	Analista
+Constanza	Ventura	Araya		Ahorro	Analista
+Juan		Sajama	Perez		Ahorro	Analista
+Josefina	Puente	Reyes		Ahorro	Analista
+
+select nombre, apellidoP, apellidoM, departamento, cargo from tablaEmpleado where departamento='Ahorro' order by apellidoP asc;
+Josefina	Puente	Reyes		Ahorro	Analista
+Juan	Sajama	Perez			Ahorro	Analista
+Constanza	Ventura	Araya		Ahorro	Analista
+Francisca	Vidal	Orellana	Ahorro	Analista
+
+select nombreLibro, Autor, editorial from tablaLibro where Editorial='Antartida' order by nombreLibro asc;
+Adios Carlos Marx	Sergio Gomez		Antartida
+Asi Hablaba Zaratrusta	Federico Nietzsche	Antartida
+cien años de soledad	Gabriel Garcia Marquez	Antartida
+El tunel		Ernesto Sabato		Antartida
+Francisca yo te amo	Jose luis Rosasco	Antartida
+La espía		Paulo Coehlo		Antartida
+
+select nombreLibro, Autor, editorial from tablaLibro where Editorial='Grijalbo' order by Autor desc;
+Un hijo no puede morir	Susana Roccatagliata	Grijalbo
+Osho conciencia femenina	Osho		Grijalbo
+Osho Cambio			Osho		Grijalbo
+Osho Emociones			Osho		Grijalbo
+
+Clausula Group By
+Esta clausula nos permite ordenar por grupos de datos, se expresa de la siguiente manera:
+
+Select * from nombre_tabla group by campo
+select * from libro group by categoria;
+
+select count(departamento), departamento from TablaEmpleado group by departamento;
+5	Afiliación
+4	Ahorro
+4	Cobranza
+1	Diseño
+4	Recaudacion
+4	Ventas
+
+select count(departamento) as cantidad, departamento from TablaEmpleado group by departamento;
+cantidad 	Departamento
+5		Afiliación
+4		Ahorro
+4		Cobranza
+1		Diseño
+4		Recaudacion
+4		Ventas
+
+select count(editorial) as cantidad, editorial from TablaLibro group by editorial;
+1	Acme
+1	Aguilar
+1	Alfaguara
+6	Antartida
+2	Cesma
+4	Grijalbo
+1	Planeta
+2	Prosa
+1	Publimex
+1	Universitaria
+1	Vergara
+1	ZigZag
+
+select count(Categoria) as cantidad, Categoria from TablaLibro group by categoria;
+6	Drama
+4	Espiritualidad
+5	Fantasia
+1	Grandes Obras
+1	Grandes Pensadores
+2	Infantil
+1	Politica
+1	Premios Literatura
+1	Psicologia
+
+Uso de funciones
+
+Función COUNT: podemos contarlos registros de nuestra tabla, se expresa de la
+siguiente manera:
+
+select count(campo) from nombre_tabla
+select count(id_libro) as cantidad from Libro;
+
+Función MAX: Podemos determinar cual es el mayor valor de un campo
+en nuestros registros, se expresa de la siguiente manera:
+
+select max(campo) from nombre_tabla
+select max(edad) from tablaEmpleado;
+
+Función MIN:  Podemos determinar cual es el mínimo valor de un campo
+en nuestros registros, se expresa de la siguiente manera:
+
+select min(campo) from nombre_tabla
+select min(edad) from tablaEmpleado;
+
+Función SUM:Podemos determinar la suma de los valores de un campo
+en nuestras tablas, se expresa de la siguiente manera:
+
+Select sum(campo) from nombre_tabla
+select sum(sueldo) from tablaEmpleado;
+
+Función AVG:Podemos determinar el promedio de los valores de un campo
+en nuestras tablas, se expresa de la siguiente manera:
+
+Select avgcampo) from nombre_tabla
+select avg(sueldo) from tablaEmpleado;
+
+select avg(edad) from tablaEmpleado;
+36
+select min(añoPublicacion) as Año, editorial from tablaLibro;
+1964	Antartida
+select max(edad) Edad, nombre, apellidoP from tablaEmpleado;
+58	Maria	Lopez
+
+Los operadores vistos el día de hoy nos proveen de funciones categorizables
+ y de la cual podriamos crear indicadores que nos permitan tomar decisiones asertivas 
+y eficientes.
