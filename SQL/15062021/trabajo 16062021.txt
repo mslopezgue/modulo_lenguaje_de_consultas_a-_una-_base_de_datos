@@ -5,7 +5,7 @@ Sistema de registros de consultas medicas
 
 
 id paciente
-rut genero nombre apellidoP apellidoM  direccion telefono fecha nacimiento Historia medica prevision
+rut genero nombre apellidoP apellidoM  direccion telefono fecha nacimiento  prevision
 fecha ingreso
 
 id_medico
