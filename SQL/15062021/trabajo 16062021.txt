@@ -1,0 +1,19 @@
+
+
+Sistema de registros de consultas medicas
+
+
+
+id paciente
+rut genero nombre apellidoP apellidoM  direccion telefono fecha nacimiento Historia medica prevision
+fecha ingreso
+
+id_medico
+titulo rut genero nombre apellidoP apellidoM especialidad titulo email fecha ingreso
+
+Idconsulta
+fecha idmedico idpaciente sintomas historia medica observaciones valorConsulta estadopagoconsulta
+
+id_ficha clinica
+fecha idmedico idpaciente rut nombre apellidoP apellidoM observaciones 
+

@@ -1,0 +1,139 @@
+Evidencia dia 4 semana 7
+
+Repaso clase anterior
+
+Clausua Having (agrupación de resultados con una clausula)
+Esta clausula se utiliza cuando tenemos resultados agrupados y queremos 
+que cumplan ciertas condiciones, se expresa de la siguiente manera:
+
+Select departamento, max(sueldo) from empleado
+group by departamento
+having max(sueldo)>650000;
+
+Afiliación	700000
+Ahorro		700000
+Cobranza	700000
+Diseño		700000
+Recaudacion	700000
+
+Ejercicios
+Utilizando las tablas libro y empleado cree las consultas para responder lo siguiente:
+
+-Determinar nombre, apellidos, cargo y departamento al cual pertenece el empleado con el mayor sueldo.
+
+SELECT nombre, apellidoP, apellidoM,cargo,departamento FROM tablaempleado WHERE sueldo=(SELECT MAX(sueldo ) FROM tablaempleado);
+Victor	Contreras	Lopez	Analista	Cobranza
+
+-Determinar nombre, apellidos, cargo y departamento al cual pertenece el empleado con el min sueldo.
+
+SELECT nombre, apellidoP, apellidoM,cargo,departamento FROM tablaempleado WHERE sueldo=(SELECT Min(sueldo ) FROM tablaempleado);
+Victoria	Secrets	Lopez	Secretaria	Operaciones
+
+-Determinar cuantos empleados hay por departamento dentro de la empresa.
+
+select count(idempleado) as cantidad, departamento from TablaEmpleado group by departamento;
+5	Afiliación
+4	Ahorro
+5	Cobranza
+1	Diseño
+1	Operaciones
+4	Recaudacion
+4	Ventas
+
+-Determinar cuanto es el gasto total mensual en sueldos dentro de la empresa.
+select sum(sueldo) from tablaEmpleado;
+15600000
+
+-Agrupar por editorial y determinar cuantos libros pertenecena cada una.
+
+select editorial, count(idlibro) as cantidad from tablalibro group by editorial;
+Acme		1
+Aguilar		1
+Alfaguara	1
+Antartida	6
+Cesma		2
+Grijalbo	4
+Planeta		1
+Prosa		2
+Publimex	1
+Universitaria	1
+Vergara		1
+ZigZag		1
+
+-Determinar la cantidad de libros en existencia dentro de la biblioteca (ejemplares)
+select count(ejemplares) as cantidad from tablalibro;
+22
+
+Diseño de bases de datos
+Modelo de base de datos, existen 3 niveles en el diseño de bases de datos:
+
+Nivel conceptual: Entender el problema, identificar elementos, los conjuntos
+de datos y como estan relacionados entre si (entidad-relacion).
+
+nivel lógico: Donde se crea el modelo relacional, es generar la estructura
+logica que manipulara la base de datos por medio del DBMS, para esto se utiliza el
+modelo relacional, que nos permite establecer la estructura de campos y registros.
+
+nivel fisico: implementacion de la base de datos. sistema de gestion BD.
+
+Primero se debe entender que va a necesitar la BD, entonces identificar que información 
+queremos almacenar y que nos va a servir.
+
+Entidad-Relación
+se define la Entidad es un objeto real o abstracto del cual se desea informacion
+en la BD (personas, lugares,etc) que sean de interés para la empresa o cliente.
+
+la entidad se representa con un rectangulo y dentro de este lleva el nombre de la
+entidad.
+
+empleado,libro serian nuestras entidades en la BD de las actividades anteriores
+
+primero se identifican las identidades que vamos a trabajar en el entorno del trabajo donde queremos 
+implementar la bd,
+analizar bien la informacion y las distintas entidades que vamos a trabajar en la base de datos.
+
+Tienda
+Productos
+Clientes
+ventas
+facturas
+proveedores
+Stock
+
+definir como se relacionan entre cada una de ellas
+Entidad relacion
+Relacion. Es la relacion que existe entre las entidades, se representan con un rombo 
+y dentro de este va un verbo o articulo para denotar la relacion que existe.
+ 
+rombo(tiene)
+Entidad-Relacion
+definir la correspondencia, se refiere al numero maximo de ocurrencia de cada entidad
+que pueden intervenir en la ocurrencia del vinculo o relación.
+
+ 1:1 (uno a uno)
+1:N (uno a muchos)
+(N:M) muchos a muchos) obliga a crear una tabla intermedia
+
+va a recibir una clave foranea, puede tener  el mismo nombre de la clave primaria.
+
+Ejericio
+
+
+Transacciones en SQL
+Son unidades o secuencias de trabajo realizadas de forma ordenaa y separada de una base de datos.}Normalmente representan cualquier camio en la base de datos
+y tienen 2 objetivos principales:
+proporcionar secuencias de trabajo fiables 
+
+siguen 4 propiedades basicas, bajo el acronimo ACID
+
+Atomicidad
+
+consistencia e integridad: propiedad que asegura que s pueda ejecutar todo lo que se puede terminar
+
+aislamiento propiedad que asegura que una operacion no afecte a otra
+asegura que la realizacion de 2 transacciones sobre la misma informacion sean independinetes
+y no generen errores, por lo que esta operacion define como y cuando los cambsio
+
+durabilidad (Persistencia)
+
+bases de datos no SQL no relacionales

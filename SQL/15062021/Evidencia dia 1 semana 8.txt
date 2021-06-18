@@ -1,0 +1,72 @@
+profesor en los ejercicios de la semana pasada me fije que cuando nos pidió el nombre  y apellido del sueldo max de la tabla empleados,  
+
+Creacion de vistas
+Una vista es una muestra de datos de nuestras tablas, pero que no se pueden
+eliminar ni editar, podemos trabajar con ella como si de una tabla normal se tratase se crea
+de la siguiente manera:
+
+Create view nombreVista as
+select campos from tabla
+
+Create view datos personales as
+select nombre, apellidoP, apellidoM from empleado;
+
+Subconsulta
+Es una consulta dentro de otra
+ejemplos:
+Determinar los empleados cuyo sueldo es mayor al promedio.
+
+SELECT nombre, cargo, sueldo FROM tablaempleado WHERE sueldo>(SELECT avg(sueldo ) FROM tablaempleado);
+Maria		Analista	700000
+Jose		Analista	700000
+Josefina	Analista	700000
+Nicolas		Desarrollador	700000
+Karen		Analista	700000
+Juan		Analista	700000
+Juanita		Analista	700000
+Benjamin	Analista	700000
+Sebastian	Analista	700000
+Rodrigo		Analista	700000
+Manuel		Analista	700000
+Rayen		Analista	700000
+Nicole		Analista	700000
+Constanza	Analista	700000
+Estefania	Analista	700000
+Francisca	Analista	700000
+Victor		Analista	900000
+
+-Determinar los empleados cuyos sueldos son mayores todos los sueldos de RRHH.
+
+select * from tablaempleado where sueldo > all(select sueldo from tablaempleado where departamento='ventas');
+1	Maria	Lopez	Guerrero	34	Recaudacion	Analista	700000	2021-02-01
+4	Jose	Fuentes	Vidal		41	Afiliación	Analista	700000	2021-02-02
+5	Josefina	Puente	Reyes	37	Ahorro		Analista	700000	2021-02-02
+6	Nicolas	Lopez	Lopez		34	Diseño		Desarrollador	700000	2021-02-01
+7	Karen	Reyes	Lopez		44	Recaudacion	Analista	700000	2021-02-03
+8	Juan	Sajama	Perez		45	Ahorro		Analista	700000	2021-02-04
+9	Juanita	Miranda	Pardo		35	Recaudacion	Analista	700000	2021-02-01
+11	Benjamin	Bernal	Fiori	33	Afiliacion	Analista	700000	2021-02-02
+12	Sebastian	Micaly	Serey	47	Afiliacion	Analista	700000	2021-02-04
+13	Rodrigo	Rioseco	Lopez		58	Recaudacion	Analista	700000	2021-02-02
+14	Manuel	Canales	Ceron		44	Cobranza	Analista	700000	2021-02-01
+15	Rayen	Araya	Nunez		24	Cobranza	Analista	700000	2021-02-01
+16	Nicole	Arancibia	Montes	38	Cobranza	Analista	700000	2021-02-01
+17	Constanza	Ventura	Araya	28	Ahorro		Analista	700000	2021-02-02
+19	Estefania	Lopez	Jimenez	35	Afiliacion	Analista	700000	2021-02-01
+20	Francisca Vidal	Orellana	37	Ahorro		Analista	700000	2021-02-02
+21	Juanito	Cubillos Serey		24	Cobranza	Analista	550000	2020-01-02
+22	Carolina Correa	Santibañez	38	Afiliacion	Analista	650000	2020-10-21
+23	Victor	Contreras	Lopez	39	Cobranza	Analista	900000	2021-03-02
+								
+
+Joins se utilizan para combinar filas de dos o mas tablas basandose en un campo comun entre ella devolviendo 
+por tanto datos de diferentes tablas.
+
+Ejemplo
+tabla clientes y tabla pedidos ambas tienen un id de cliente como clave foranea
+
+select cliente.nombre, pedido.idpedido, pedido.total
+from cliente
+inner join pedido
+on cliente.idcliente=pedido.idcliente;
+

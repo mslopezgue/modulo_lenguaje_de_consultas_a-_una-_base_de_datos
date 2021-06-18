@@ -1,0 +1,106 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema BDregistroConsultas
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema BDregistroConsultas
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `BDregistroConsultas` DEFAULT CHARACTER SET utf8 ;
+USE `BDregistroConsultas` ;
+
+-- -----------------------------------------------------
+-- Table `BDregistroConsultas`.`Paciente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDregistroConsultas`.`Paciente` (
+  `idPaciente` INT NOT NULL AUTO_INCREMENT,
+  `rut` VARCHAR(45) NULL,
+  `nombre` VARCHAR(45) NULL,
+  `apellidoP` VARCHAR(45) NULL,
+  `apellidoM` VARCHAR(45) NULL,
+  `FechaNacimiento` DATE NULL,
+  `sexo` VARCHAR(10) NULL,
+  `Direccion` VARCHAR(45) NULL,
+  `telefono` INT NULL,
+  `FechaIngreso` DATE NULL,
+  PRIMARY KEY (`idPaciente`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `BDregistroConsultas`.`Medico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDregistroConsultas`.`Medico` (
+  `idMedico` INT NOT NULL AUTO_INCREMENT,
+  `rut` VARCHAR(45) NULL,
+  `nombre` VARCHAR(45) NULL,
+  `apellidoP` VARCHAR(45) NULL,
+  `apellidoM` VARCHAR(45) NULL,
+  `Sexo` VARCHAR(45) NULL,
+  `titulo` VARCHAR(45) NULL,
+  `Especialidad` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `FechaIngreso` DATE NULL,
+  PRIMARY KEY (`idMedico`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `BDregistroConsultas`.`Consulta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDregistroConsultas`.`Consulta` (
+  `idConsulta` INT NOT NULL AUTO_INCREMENT,
+  `Fecha` DATE NULL,
+  `Observaciones` VARCHAR(45) NULL,
+  `ValorConsulta` VARCHAR(45) NULL,
+  `EstadoConsulta` VARCHAR(45) NULL,
+  `Medico_idMedico` INT NOT NULL,
+  `Paciente_idPaciente` INT NOT NULL,
+  PRIMARY KEY (`idConsulta`),
+  INDEX `fk_Consulta_Medico1_idx` (`Medico_idMedico` ASC),
+  INDEX `fk_Consulta_Paciente1_idx` (`Paciente_idPaciente` ASC),
+  CONSTRAINT `fk_Consulta_Medico`
+    FOREIGN KEY (`Medico_idMedico`)
+    REFERENCES `BDregistroConsultas`.`Medico` (`idMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Consulta_Paciente`
+    FOREIGN KEY (`Paciente_idPaciente`)
+    REFERENCES `BDregistroConsultas`.`Paciente` (`idPaciente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `BDregistroConsultas`.`FichaClinica`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDregistroConsultas`.`FichaClinica` (
+  `idFichaClinica` INT NOT NULL AUTO_INCREMENT,
+  `Fecha` DATE NULL,
+  `idMedico` INT ZEROFILL NULL,
+  `idPaciente` INT NULL,
+  `Rut` VARCHAR(45) NULL,
+  `Nombre` VARCHAR(45) NULL,
+  `ApellidoP` VARCHAR(45) NULL,
+  `ApellidoM` VARCHAR(45) NULL,
+  `Observaciones` VARCHAR(300) NULL,
+  `Paciente_idPaciente` INT NOT NULL,
+  PRIMARY KEY (`idFichaClinica`),
+  INDEX `fk_FichaClinica_Paciente1_idx` (`Paciente_idPaciente` ASC),
+  CONSTRAINT `fk_FichaClinica_Paciente1`
+    FOREIGN KEY (`Paciente_idPaciente`)
+    REFERENCES `BDregistroConsultas`.`Paciente` (`idPaciente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
